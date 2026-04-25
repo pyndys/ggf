@@ -34,15 +34,63 @@ func getLogo(osName string) Logo {
 	case strings.Contains(name, "debian"):
 		l = []string{
 			"  _____   ",
-			" /  __ \\\\ ",
+			" /  __ \\  ",
 			"|  /    | ",
-			"|  \\\\___- ",
+			"|  \\___-  ",
 			"-_        ",
 			" --_      ",
 			"          ",
 		}
+	case strings.Contains(name, "ubuntu"):
+		l = []string{
+			"        _   ",
+			"    ---(_)  ",
+			" _/  ---  \\ ",
+			"(_) |   |   ",
+			"  \\  --- _/ ",
+			"    ---(_)  ",
+			"            ",
+		}
+	case strings.Contains(name, "suse"):
+		l = []string{
+			"  _______  ",
+			"__|   __ \\ ",
+			"     / .\\ \\",
+			"     \\__/ |",
+			"   _______|",
+			"   \\_______",
+			"__________/",
+		}
+	case strings.Contains(name, "gentoo"):
+		l = []string{
+			" _-----_   ",
+			"(       \\  ",
+			"\\    0   \\ ",
+			" \\        )",
+			" /      _/ ",
+			"(     _-   ",
+			"\\____-     ",
+		}
+	case strings.Contains(name, "alpine"):
+		l = []string{
+			"    /\\ /\\    ",
+			"   // \\  \\   ",
+			"  //   \\  \\  ",
+			" ///    \\  \\ ",
+			" //      \\  \\",
+			"          \\  ",
+			"             ",
+		}
 	default:
-		l = []string{"", "", "", "", "", "", ""}
+		l = []string{
+			"    ___   ",
+			"   (.· |  ",
+			"   (<> |  ",
+			"  / __  \\ ",
+			" ( /  \\ /|",
+			"_/\\ __)/_)",
+			"\\/-____\\/ ",
+		}
 	}
 
 	return Logo{Lines: l}
