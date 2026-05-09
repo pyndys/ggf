@@ -20,6 +20,7 @@ func getLogo(osName string) Logo {
 			" //\\\\___//    ",
 			"// /\\\\  \\\\==  ",
 			"  // \\\\  \\\\   ",
+			"              ",
 		}
 	case strings.Contains(name, "arch"):
 		l = []string{
@@ -30,6 +31,7 @@ func getLogo(osName string) Logo {
 			"  /   ,,   \\  ",
 			" /   |  |  -\\ ",
 			"/_-''    ''-_\\",
+			"              ",
 		}
 	case strings.Contains(name, "debian"):
 		l = []string{
@@ -39,6 +41,7 @@ func getLogo(osName string) Logo {
 			"|  \\___-  ",
 			"-_        ",
 			" --_      ",
+			"          ",
 			"          ",
 		}
 	case strings.Contains(name, "ubuntu"):
@@ -50,6 +53,7 @@ func getLogo(osName string) Logo {
 			"  \\  --- _/ ",
 			"    ---(_)  ",
 			"            ",
+			"            ",
 		}
 	case strings.Contains(name, "suse"):
 		l = []string{
@@ -60,6 +64,7 @@ func getLogo(osName string) Logo {
 			"   _______|",
 			"   \\_______",
 			"__________/",
+			"           ",
 		}
 	case strings.Contains(name, "gentoo"):
 		l = []string{
@@ -70,6 +75,7 @@ func getLogo(osName string) Logo {
 			" /      _/ ",
 			"(     _-   ",
 			"\\____-     ",
+			"           ",
 		}
 	case strings.Contains(name, "alpine"):
 		l = []string{
@@ -79,6 +85,7 @@ func getLogo(osName string) Logo {
 			" ///    \\  \\ ",
 			" //      \\  \\",
 			"          \\  ",
+			"             ",
 			"             ",
 		}
 	default:
@@ -90,6 +97,7 @@ func getLogo(osName string) Logo {
 			" ( /  \\ /|",
 			"_/\\ __)/_)",
 			"\\/-____\\/ ",
+			"          ",
 		}
 	}
 

@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 )
 
@@ -16,9 +18,9 @@ func term() string {
 
 func wm() string {
 	if os.Getenv("XDG_SESSION_DESKTOP") == "" {
-		return "unknown" + " (" + os.Getenv("XDG_SESSION_TYPE") + ")"
+		return fmt.Sprintf("unknown (%s)", os.Getenv("XDG_SESSION_TYPE"))
 	} else {
-		return os.Getenv("XDG_SESSION_DESKTOP") + " (" + os.Getenv("XDG_SESSION_TYPE") + ")"
+		return fmt.Sprintf("%s (%s)", os.Getenv("XDG_SESSION_DESKTOP"), os.Getenv("XDG_SESSION_TYPE"))
 	}
 }
 
@@ -52,4 +54,47 @@ func shell() string {
 		shellName = path.Base(shellPath)
 	}
 	return shellName
+}
+
+func uptime() string {
+	secondsRaw, _ := os.ReadFile("/proc/uptime")
+	seconds := strings.Split(string(secondsRaw), " ")[0]
+
+	secondsFloat, _ := strconv.ParseFloat(seconds, 64)
+	secondsInt := int(secondsFloat)
+
+	days := int(secondsInt / 86400)
+	hours := int((secondsInt % 86400) / 3600)
+	minutes := int((secondsInt % 3600) / 60)
+
+	return fmt.Sprintf("%d days, %d hours, %d minutes", days, hours, minutes)
+}
+
+func memory() string {
+	memData, _ := os.ReadFile("/proc/meminfo")
+	var s string
+	var memTotalKb, memAvailableKb float64
+
+	for _, line := range strings.Split(string(memData), "\n") {
+		if strings.HasPrefix(line, "MemTotal:") {
+			s = strings.TrimPrefix(line, "MemTotal:")
+			s = strings.TrimSuffix(s, "kB")
+			s = strings.TrimSpace(s)
+
+			memTotalKb, _ = strconv.ParseFloat(s, 64)
+		}
+
+		if strings.HasPrefix(line, "MemAvailable:") {
+			s = strings.TrimPrefix(line, "MemAvailable:")
+			s = strings.TrimSuffix(s, "kB")
+			s = strings.TrimSpace(s)
+
+			memAvailableKb, _ = strconv.ParseFloat(s, 64)
+		}
+	}
+
+	memTotalGb := memTotalKb / (1024 * 1024)
+	memUsingGb := (memTotalKb - memAvailableKb) / (1024 * 1024)
+
+	return fmt.Sprintf("%.2f GB / %.2f GB", memUsingGb, memTotalGb)
 }
