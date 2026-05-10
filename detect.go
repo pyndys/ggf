@@ -67,7 +67,16 @@ func uptime() string {
 	hours := int((secondsInt % 86400) / 3600)
 	minutes := int((secondsInt % 3600) / 60)
 
-	return fmt.Sprintf("%d days, %d hours, %d minutes", days, hours, minutes)
+	switch {
+	case secondsInt < 60:
+		return "less than minute"
+	case 60 <= secondsInt && secondsInt < 3600:
+		return fmt.Sprintf("%d minutes", minutes)
+	case 3600 <= secondsInt && secondsInt < 86400:
+		return fmt.Sprintf("%d hours, %d minutes", hours, minutes)
+	default:
+		return fmt.Sprintf("%d days, %d hours, %d minutes", days, hours, minutes)
+	}
 }
 
 func memory() string {
@@ -83,7 +92,6 @@ func memory() string {
 
 			memTotalKb, _ = strconv.ParseFloat(s, 64)
 		}
-
 		if strings.HasPrefix(line, "MemAvailable:") {
 			s = strings.TrimPrefix(line, "MemAvailable:")
 			s = strings.TrimSuffix(s, "kB")

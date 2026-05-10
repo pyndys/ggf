@@ -5,7 +5,6 @@ import (
 )
 
 func main() {
-	// Colors
 	blue := "\033[34m"
 	purple := "\033[35m"
 	reset := "\033[0m"
@@ -13,7 +12,6 @@ func main() {
 	osName := OS()
 	logo := getLogo(osName)
 
-	// Print ggf
 	fmt.Printf("%s %s %s%s%s@%s%s\n", blue, logo.Lines[0], reset, purple, user(), host(), reset)
 	fmt.Printf("%s %s %sos       %s\n", blue, logo.Lines[1], reset, osName)
 	fmt.Printf("%s %s %skernel   %s\n", blue, logo.Lines[2], reset, kernel())
