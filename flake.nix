@@ -22,7 +22,7 @@
     apps = forAllSystems (pkgs: {
       default = {
         type = "app";
-        program = "${self.packages.${pkgs.system}.default}/bin/ggf";
+        program = "${self.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/ggf";
       };
     });
   };
