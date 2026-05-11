@@ -5,19 +5,17 @@ import (
 )
 
 func main() {
-	blue := "\033[34m"
-	purple := "\033[35m"
-	reset := "\033[0m"
-
 	osName := OS()
 	logo := getLogo(osName)
 
-	fmt.Printf("%s %s %s%s%s@%s%s\n", blue, logo.Lines[0], reset, purple, user(), host(), reset)
-	fmt.Printf("%s %s %sos       %s\n", blue, logo.Lines[1], reset, osName)
-	fmt.Printf("%s %s %skernel   %s\n", blue, logo.Lines[2], reset, kernel())
-	fmt.Printf("%s %s %sshell    %s\n", blue, logo.Lines[3], reset, shell())
-	fmt.Printf("%s %s %suptime   %s\n", blue, logo.Lines[4], reset, uptime())
-	fmt.Printf("%s %s %sterm     %s\n", blue, logo.Lines[5], reset, term())
-	fmt.Printf("%s %s %swm       %s\n", blue, logo.Lines[6], reset, wm())
-	fmt.Printf("%s %s %smemory   %s\n", blue, logo.Lines[7], reset, memory())
+	reset := "\033[0m"
+
+	fmt.Printf("%s %s %s@%s%s\n", logo.Colors[0], logo.Lines[0], user(), host(), reset)
+	fmt.Printf("%s %s %sos%s       %s\n", logo.Colors[0], logo.Lines[1], logo.Colors[1], reset, osName)
+	fmt.Printf("%s %s %skernel%s   %s\n", logo.Colors[0], logo.Lines[2], logo.Colors[1], reset, kernel())
+	fmt.Printf("%s %s %sshell%s    %s\n", logo.Colors[0], logo.Lines[3], logo.Colors[1], reset, shell())
+	fmt.Printf("%s %s %suptime%s   %s\n", logo.Colors[0], logo.Lines[4], logo.Colors[1], reset, uptime())
+	fmt.Printf("%s %s %sterm%s     %s\n", logo.Colors[0], logo.Lines[5], logo.Colors[1], reset, term())
+	fmt.Printf("%s %s %swm%s       %s\n", logo.Colors[0], logo.Lines[6], logo.Colors[1], reset, wm())
+	fmt.Printf("%s %s %smemory%s   %s\n", logo.Colors[0], logo.Lines[7], logo.Colors[1], reset, memory())
 }
