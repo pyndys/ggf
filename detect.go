@@ -106,3 +106,15 @@ func memory() string {
 
 	return fmt.Sprintf("%.2f GB / %.2f GB", memUsingGb, memTotalGb)
 }
+
+func cpu() string {
+	cpuData, _ := os.ReadFile("/proc/cpuinfo")
+	cpuName := "unknown"
+	for _, line := range strings.Split(string(cpuData), "\n") {
+		if strings.HasPrefix(line, "model name") {
+			cpuName = strings.Trim(line[13:], "\"")
+			break
+		}
+	}
+	return cpuName
+}
