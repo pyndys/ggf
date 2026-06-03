@@ -17,10 +17,13 @@ func term() string {
 }
 
 func wm() string {
-	if os.Getenv("XDG_SESSION_DESKTOP") == "" {
-		return fmt.Sprintf("unknown (%s)", os.Getenv("XDG_SESSION_TYPE"))
-	} else {
+	switch {
+	case len(os.Getenv("XDG_SESSION_DESKTOP")) > 1:
 		return fmt.Sprintf("%s (%s)", os.Getenv("XDG_SESSION_DESKTOP"), os.Getenv("XDG_SESSION_TYPE"))
+	case len(os.Getenv("XDG_CURRENT_DESKTOP")) > 1:
+		return fmt.Sprintf("%s (%s)", os.Getenv("XDG_CURRENT_DESKTOP"), os.Getenv("XDG_SESSION_TYPE"))
+	default:
+		return fmt.Sprintf("unknown (%s)", os.Getenv("XDG_SESSION_TYPE"))
 	}
 }
 
