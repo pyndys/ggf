@@ -29,6 +29,25 @@ Then add the package to your `systemPackages`:
 inputs.ggf.packages.${system}.default
 ```
 
+### On Arch
+
+Install with paru
+```sh
+paru -S ggf
+```
+
+Install with yay
+```sh
+yay -S ggf
+```
+
+Or just make from AUR
+```sh
+git clone https://aur.archlinux.org/packages/ggf
+cd ggf
+makepkg -si
+```
+
 ### Build from Source
 
 Requires **Go >= 1.18** and **git**.

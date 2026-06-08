@@ -28,6 +28,24 @@ ggf.url = "github:pyndys/ggf";
 ```nix
 inputs.ggf.packages.${system}.default
 ```
+### На Arch
+
+Установите через paru
+```sh
+paru -S ggf
+```
+
+Установите через yay
+```sh
+yay -S ggf
+```
+
+Или просто соберите из AUR
+```sh
+git clone https://aur.archlinux.org/packages/ggf
+cd ggf
+makepkg -si
+```
 
 ### Сборка из исходников
 
