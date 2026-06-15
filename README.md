@@ -26,7 +26,7 @@ ggf.url = "github:pyndys/ggf";
 
 Then add the package to your `systemPackages`:
 ```nix
-inputs.ggf.packages.${system}.default
+inputs.ggf.packages.${pkgs.stdenv.hostPlatform.system}.default
 ```
 
 ### On Arch

@@ -26,8 +26,9 @@ ggf.url = "github:pyndys/ggf";
 
 Затем добавьте пакет в `systemPackages`:
 ```nix
-inputs.ggf.packages.${system}.default
+inputs.ggf.packages.${pkgs.stdenv.hostPlatform.system}.default
 ```
+
 ### На Arch
 
 Установите через paru
