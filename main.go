@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-	osName := OS()
 	resetColor := "\033[0m"
 
 	var logoOverride string
@@ -21,18 +20,20 @@ func main() {
 	flag.BoolVar(&noColor, "no-color", false, "print without colors")
 	flag.BoolVar(&noColor, "nc", false, "print without colors (shorthand)")
 
+	flag.Parse()
+
+	osName := OS()
+	if len(logoOverride) > 0 {
+		osName = logoOverride
+	}
 	logo := getLogo(osName)
 
-	flag.Parse()
-	if len(logoOverride) > 0 {
-		logo = getLogo(logoOverride)
-	}
-	if noLogo == true {
+	if noLogo {
 		for i := range logo.Lines {
 			logo.Lines[i] = ""
 		}
 	}
-	if noColor == true {
+	if noColor {
 		for i := range logo.Colors {
 			logo.Colors[i] = resetColor
 		}
