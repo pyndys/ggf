@@ -3,24 +3,36 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 )
+
+var version = "dev"
 
 func main() {
 	resetColor := "\033[0m"
 
 	var logoOverride string
 	flag.StringVar(&logoOverride, "logo", "", "override distro logo")
-	flag.StringVar(&logoOverride, "l", "", "override distro logo (shorthand)")
+	flag.StringVar(&logoOverride, "l", "", "override distro logo")
 
 	var noLogo bool
 	flag.BoolVar(&noLogo, "no-logo", false, "print without logo")
-	flag.BoolVar(&noLogo, "nl", false, "print without logo (shorthand)")
+	flag.BoolVar(&noLogo, "nl", false, "print without logo")
 
 	var noColor bool
 	flag.BoolVar(&noColor, "no-color", false, "print without colors")
-	flag.BoolVar(&noColor, "nc", false, "print without colors (shorthand)")
+	flag.BoolVar(&noColor, "nc", false, "print without colors")
+
+	var showVersion bool
+	flag.BoolVar(&showVersion, "version", false, "print version")
+	flag.BoolVar(&showVersion, "v", false, "print version")
 
 	flag.Parse()
+
+	if showVersion {
+		fmt.Println("ggf", version)
+		os.Exit(0)
+	}
 
 	osName := OS()
 	if len(logoOverride) > 0 {
