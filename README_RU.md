@@ -43,7 +43,7 @@ yay -S ggf
 
 Или просто соберите из AUR
 ```sh
-git clone https://aur.archlinux.org/packages/ggf
+git clone https://aur.archlinux.org/ggf
 cd ggf
 makepkg -si
 ```
