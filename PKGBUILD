@@ -1,6 +1,6 @@
 # Maintainer: pyndys
 pkgname=ggf
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Great Go Fetch (ggf) - fast system info fetch utility for Linux"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ build() {
     cd "$pkgname-$pkgver"
     export CGO_ENABLED=0
     go build -v \
-        -ldflags="-s -w" \
+        -ldflags="-s -w -X main.version=$pkgver" \
         -o "$pkgname" \
         .
 }

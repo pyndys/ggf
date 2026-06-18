@@ -12,13 +12,14 @@
     packages = forAllSystems (pkgs: {
       default = pkgs.buildGoModule {
         pname = "ggf";
-        version = "0.2.1";
+        version = "0.3.0";
         src = ./.;
         vendorHash = null;
 
         ldflags = [
           "-s"
           "-w"
+          "-X main.version=0.3.0"
         ];
       };
     });
