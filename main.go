@@ -11,6 +11,17 @@ var version = "dev"
 func main() {
 	resetColor := "\033[0m"
 
+	flag.Usage = func() {
+		fmt.Printf("ggf %s - Great Go Fetch\n\n", version)
+		fmt.Printf("usage: ggf [<flags>]\n\n")
+		fmt.Println("Flags:")
+		fmt.Println("  -v,  --version    print version")
+		fmt.Println("  -l,  --logo       override ASCII distro logo (e.g. arch, nixos, debian)")
+		fmt.Println("  -nl, --no-logo    disable ASCII distro logo")
+		fmt.Println("  -nc, --no-color   disable colors")
+		fmt.Println("  -h,  --help       show this help")
+	}
+
 	var logoOverride string
 	flag.StringVar(&logoOverride, "logo", "", "override distro logo")
 	flag.StringVar(&logoOverride, "l", "", "override distro logo")
