@@ -46,11 +46,11 @@ func main() {
 	}
 
 	osName := OS()
-	if len(logoOverride) > 0 {
-		osName = logoOverride
-	}
 	logo := getLogo(osName)
 
+	if len(logoOverride) > 0 {
+		logo = getLogo(logoOverride)
+	}
 	if noLogo {
 		for i := range logo.Lines {
 			logo.Lines[i] = ""
